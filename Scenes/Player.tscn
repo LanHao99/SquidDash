@@ -471,9 +471,10 @@ frame = 2
 frame_progress = 0.7665355
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.25, 1.25)
+zoom = Vector2(1.2, 1.2)
 process_callback = 0
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="PlayerDetect" type="Area2D" parent="."]
 unique_name_in_owner = true

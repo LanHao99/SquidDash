@@ -404,7 +404,8 @@ size_flags_vertical = 4
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_right = -977.0
+offset_left = 1.0
+offset_right = -1112.0
 offset_bottom = 52.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6bp64")
@@ -435,68 +436,59 @@ follow_viewport_enabled = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer2"]
 anchors_preset = -1
-anchor_left = 0.15579168
-anchor_top = 0.66049385
-anchor_right = 1.1657987
-anchor_bottom = 0.73930556
-offset_left = 503.52798
-offset_top = -195.0
-offset_right = -607.0
-offset_bottom = -195.07
+anchor_left = 0.441
+anchor_top = 0.324
+anchor_right = 0.48900002
+anchor_bottom = 0.4
+offset_left = -0.4800415
+offset_top = -0.27999878
+offset_right = 105.079956
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6bp64")
-metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer2/Panel"]
 layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
 offset_right = 69.0
-offset_bottom = 52.0
-theme_override_constants/margin_left = 10
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="CanvasLayer2/Panel/MarginContainer"]
-layout_mode = 2
-text = "→"
+offset_bottom = 44.0
+text = "按下→/D"
 label_settings = SubResource("LabelSettings_6bp64")
 
 [node name="Panel3" type="Panel" parent="CanvasLayer2"]
 anchors_preset = -1
-anchor_left = 0.7339167
-anchor_top = 0.77469134
-anchor_right = 1.7942709
-anchor_bottom = 0.8535031
-offset_left = 503.52798
-offset_top = -195.0
-offset_right = -607.0
-offset_bottom = -195.07
+anchor_left = 1.0270001
+anchor_top = 0.43100002
+anchor_right = 1.1190001
+anchor_bottom = 0.5
+offset_left = -0.5600586
+offset_top = -0.32000732
+offset_right = -0.32006836
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6bp64")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2/Panel3"]
+[node name="Label" type="Label" parent="CanvasLayer2/Panel3"]
 layout_mode = 0
-offset_right = 69.0
-offset_bottom = 52.0
-theme_override_constants/margin_left = 10
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="CanvasLayer2/Panel3/MarginContainer"]
-layout_mode = 2
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 100.0
+offset_bottom = 44.0
 text = "space"
 label_settings = SubResource("LabelSettings_6bp64")
 
 [node name="Panel4" type="Panel" parent="CanvasLayer2"]
 anchors_preset = -1
-anchor_left = 1.0837431
-anchor_top = 0.4027778
-anchor_right = 2.186632
-anchor_bottom = 0.48930556
-offset_left = 503.52798
-offset_top = -195.0
-offset_right = -607.0
-offset_bottom = -195.07
+anchor_left = 1.3959696
+anchor_top = 0.132
+anchor_right = 1.5277119
+anchor_bottom = 0.2162917
+offset_left = 0.15893555
+offset_top = -0.040000916
+offset_right = 0.5288086
+offset_bottom = 0.26997375
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6bp64")
@@ -513,14 +505,14 @@ label_settings = SubResource("LabelSettings_6bp64")
 
 [node name="Panel5" type="Panel" parent="CanvasLayer2"]
 anchors_preset = -1
-anchor_left = 2.253882
-anchor_top = 0.058641974
-anchor_right = 3.3949652
-anchor_bottom = 0.1513426
-offset_left = 503.52798
-offset_top = -195.0
-offset_right = -607.0
-offset_bottom = -195.07
+anchor_left = 2.7036433
+anchor_top = -0.047030892
+anchor_right = 2.877875
+anchor_bottom = 0.039
+offset_left = 0.33666992
+offset_top = -0.13775635
+offset_right = 0.31982422
+offset_bottom = -0.08000183
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -538,14 +530,14 @@ label_settings = SubResource("LabelSettings_6bp64")
 
 [node name="Panel6" type="Panel" parent="CanvasLayer2"]
 anchors_preset = -1
-anchor_left = 2.756486
-anchor_top = -0.16820988
-anchor_right = 3.9487848
-anchor_bottom = -0.081682086
-offset_left = 503.52798
-offset_top = -195.0
-offset_right = -607.0
-offset_bottom = -195.07
+anchor_left = 2.788414
+anchor_top = -0.439
+anchor_right = 3.001969
+anchor_bottom = -0.354
+offset_left = -0.16992188
+offset_top = -0.031097412
+offset_right = 0.4794922
+offset_bottom = -0.11999512
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -563,14 +555,14 @@ label_settings = SubResource("LabelSettings_6bp64")
 
 [node name="Panel7" type="Panel" parent="CanvasLayer2"]
 anchors_preset = -1
-anchor_left = 4.3693333
-anchor_top = -0.16820988
-anchor_right = 5.3671875
-anchor_bottom = -0.081682086
-offset_left = 503.52798
-offset_top = -195.0
-offset_right = -607.0
-offset_bottom = -195.07
+anchor_left = 4.313567
+anchor_top = -0.439
+anchor_right = 4.351594
+anchor_bottom = -0.35300002
+offset_left = -0.36572266
+offset_top = -0.031097412
+offset_right = -0.040039063
+offset_bottom = 0.27890015
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -588,14 +580,14 @@ label_settings = SubResource("LabelSettings_6bp64")
 
 [node name="Panel8" type="Panel" parent="CanvasLayer2"]
 anchors_preset = -1
-anchor_left = 5.7078753
-anchor_top = -0.16820988
-anchor_right = 6.7092013
-anchor_bottom = -0.081682086
-offset_left = 503.52798
-offset_top = -195.0
-offset_right = -607.0
-offset_bottom = -195.07
+anchor_left = 5.03
+anchor_top = -0.439
+anchor_right = 5.1270003
+anchor_bottom = -0.35300002
+offset_left = 0.60009766
+offset_top = -0.031097412
+offset_right = 0.43945313
+offset_bottom = 0.27890015
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -608,7 +600,7 @@ offset_left = 10.0
 offset_top = 8.0
 offset_right = 262.0
 offset_bottom = 50.0
-text = "?"
+text = "?????"
 label_settings = SubResource("LabelSettings_6bp64")
 
 [node name="GrayBG" type="Parallax2D" parent="."]
@@ -637,7 +629,7 @@ tile_set = SubResource("TileSet_6bp64")
 
 [node name="CheckPoint01" parent="CheckPointController" instance=ExtResource("7_344ge")]
 unique_name_in_owner = true
-position = Vector2(5424, -143)
+position = Vector2(545, 336)
 
 [node name="CheckPoint02" parent="CheckPointController" instance=ExtResource("7_344ge")]
 unique_name_in_owner = true
