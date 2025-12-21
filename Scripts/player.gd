@@ -12,6 +12,8 @@ signal entered_checkpoint(checkpoint)
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const DASH_SPEED = 600.0
+const HYPER_JUMP_XSPEED = 300.0
+const SUPER_HYPER_JUMP_XSPEED = 1200.0
 
 var is_jumping = false
 var dashing = false
@@ -19,6 +21,9 @@ var can_dash = true
 var dash_direction = Vector2(1,0)
 var current_direction = Vector2(1,0)
 var rotated = false
+var can_super_hyper_jump = false
+var can_hyper_jump = false
+var is_hypering = false
 
 func walk():
 	var direction := Input.get_axis("left", "right")
@@ -58,6 +63,9 @@ func dash(delta: float):
 	if Input.is_action_just_pressed("dash") and can_dash:
 		#根据当前的上下左右按键计算出冲刺方向
 		dash_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
+		can_hyper_jump = true
+		if dash_direction.y > 0:
+			can_super_hyper_jump = true
 		if dash_direction == Vector2(0,0):
 			dash_direction = current_direction
 		# 给予冲刺初速度，之后每帧由 dash() 函数递减
@@ -79,11 +87,16 @@ func dash(delta: float):
 		await get_tree().create_timer(0.6).timeout
 		DashCollision.disabled = true
 		StandCollision.disabled = false
-		dashing = false
+		if !is_hypering:
+			dashing = false
 	
 	if dashing:
-		velocity -= dash_direction * DASH_SPEED * delta * 0.17 #1/6
+		#水平阻力
+		if abs(velocity.x) > SPEED:
+			velocity.x *= 1-delta * 0.17
 		WalkParticles2D.emitting = true
+		hyper_jump(dash_direction.x)
+
 	if is_on_floor() and !dashing:
 		can_dash = true
 		WalkParticles2D.emitting = false
@@ -96,7 +109,30 @@ func die():
 	SoundManager.play_sound(DEAD_SOUND)
 	await PlayerSprite2D.animation_finished
 	dead.emit()
-	
+
+func hyper_jump(direction: float):
+	if can_hyper_jump and dashing:
+		if Input.is_action_just_pressed("jump"):
+			PlayerSprite2D.pause()
+			velocity.y = JUMP_VELOCITY * 1.2
+			if can_super_hyper_jump:
+				print("super hyper jump")
+				velocity.x += SUPER_HYPER_JUMP_XSPEED * direction
+			else:
+				print("hyper jump")
+				velocity.x += HYPER_JUMP_XSPEED * direction
+			is_jumping = true
+			can_hyper_jump = false
+			can_super_hyper_jump = false
+			dashing = true
+			is_hypering = true
+			await get_tree().create_timer(0.6).timeout
+			is_hypering = false
+			dashing = false
+			PlayerSprite2D.play()
+	elif !dashing:
+		can_hyper_jump = false
+		can_super_hyper_jump = false
 	
 func _ready() -> void:
 	pass
@@ -109,7 +145,6 @@ func _physics_process(delta: float) -> void:
 	# gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	move_and_slide()
 
 func _on_player_detect_area_entered(area: Area2D) -> void:

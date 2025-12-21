@@ -18,8 +18,8 @@ func spawn_player() -> void:
 	player.dead.connect(
 		func() -> void:
 			for i in range(len(check_points)):
-				if check_points[i].is_activated == false:
-					current_checkpoint = max(current_checkpoint, i-1)
+				if check_points[len(check_points)-i-1].is_activated == true:
+					current_checkpoint = max(current_checkpoint, len(check_points)-i-1)
 					break
 			GameManager.death_count += 1
 			update_death_count()
