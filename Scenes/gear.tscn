@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://61qxae6nj6xv"]
 
-[ext_resource type="Script" uid="uid://dmg8nkpj3iluk" path="res://Scenes/gear.gd" id="1_7vd1c"]
+[ext_resource type="Script" uid="uid://dmg8nkpj3iluk" path="res://Scripts/gear.gd" id="1_7vd1c"]
 [ext_resource type="Texture2D" uid="uid://cpbciu84o86f" path="res://Sprites/Pixel Adventure/Traps/Saw/On (38x38).png" id="1_b1vib"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7vd1c"]
@@ -73,12 +73,12 @@ radius = 13.536986
 [node name="Gear" type="Area2D"]
 script = ExtResource("1_7vd1c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="GearAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4afrq")
-frame = 4
-frame_progress = 0.21540825
+autoplay = "default"
+frame_progress = 0.275581
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="GearCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_b1vib")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

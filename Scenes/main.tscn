@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5cbm8nmn7qu0" path="res://Sprites/Pixel Adventure/Terrain/Terrain (16x16).png" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://y2i1qarxrf1o" path="res://Sprites/Pixel Adventure/Background/Blue.png" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://61qxae6nj6xv" path="res://Scenes/gear.tscn" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://cth83yyc87rcr" path="res://Scenes/SoundManager.tscn" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://cth83yyc87rcr" path="res://Scenes/autoload/SoundManager.tscn" id="5_kry3j"]
 [ext_resource type="Texture2D" uid="uid://bf8xldorqgati" path="res://Sprites/UI/tile_0000.png" id="6_21xkr"]
 [ext_resource type="FontFile" uid="uid://jvh286wv4akt" path="res://Sprites/UI/fusion-pixel-12px-monospaced-zh_hans.ttf" id="7_6bp64"]
 
@@ -372,6 +372,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="Node2D" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
 repeat_size = Vector2(64, 64)
 repeat_times = 32
 
