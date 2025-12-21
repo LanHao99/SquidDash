@@ -7,7 +7,7 @@ class_name Player
 @onready var PlayerDetect = $PlayerDetect
 const DEAD_SOUND = preload("res://Sounds/dead.mp3")
 signal dead
-signal entered_checkpoint
+signal entered_checkpoint(checkpoint)
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -96,7 +96,6 @@ func die():
 	SoundManager.play_sound(DEAD_SOUND)
 	await PlayerSprite2D.animation_finished
 	dead.emit()
-	queue_free()
 	
 	
 func _ready() -> void:
@@ -115,4 +114,4 @@ func _physics_process(delta: float) -> void:
 
 func _on_player_detect_area_entered(area: Area2D) -> void:
 	if area.is_in_group(&"CheckPoint"):
-		entered_checkpoint.emit()
+		entered_checkpoint.emit(area)

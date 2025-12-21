@@ -12,11 +12,7 @@ var current_checkpoint = 0
 
 func spawn_player() -> void:
 	player = PLAYER_SCENE.instantiate()
-	# await get_tree().create_timer(1).timeout
 	add_child(player)
-
-	player.connect("entered_checkpoint", Callable(self, "_on_player_entered_checkpoint"))
-
 	player.position = check_points[current_checkpoint].position + Vector2(0, -20)
 	player.set_physics_process(false)
 	player.PlayerSprite2D.play("spawn")
@@ -24,33 +20,26 @@ func spawn_player() -> void:
 	player.set_physics_process(true)
 	player.dead.connect(
 		func() -> void:
+			for i in range(len(check_points)):
+				if check_points[i].is_activated == false:
+					current_checkpoint = max(current_checkpoint, i-1)
+					break
+			GameManager.death_count += 1
+			update_death_count()
+			player.queue_free()
 			spawn_player()
 	)
 
 func update_death_count() -> void:
 	DeathCountNumber.text = str(GameManager.death_count)
 
-func switch_checkpoint() -> void:
-	for i in range(len(check_points)):
-		if check_points[i].is_activated:
-			if i == current_checkpoint:
-				check_points[i].is_activated = false
-				check_points[i].CheckPointAnimation.play("inactivated")
-				continue
-			current_checkpoint = i
-			break
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	check_points = [CheckPoint01, CheckPoint02, CheckPoint03]
+	check_points = [CheckPoint01, CheckPoint02, CheckPoint03, 0]
 	spawn_player()
-
-	check_points[current_checkpoint].is_activated = true
 
 
 func _on_boundary_body_entered(body: Node2D) -> void:
 	if body.is_in_group(&"Player"):
 		if body.has_method("die"):
 			body.die()
-			GameManager.death_count += 1
-			update_death_count()

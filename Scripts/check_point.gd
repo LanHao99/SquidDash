@@ -10,9 +10,9 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group(&"Player") and not is_activated:
+		is_activated = true
 		CheckPointAnimation.play("start")
 		checkpoint_activated.emit()
-		is_activated = true
 
 func _on_checkpoint_activated() -> void:
 	if CheckPointAnimation.is_playing():
