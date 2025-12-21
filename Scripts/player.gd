@@ -1,9 +1,13 @@
 extends CharacterBody2D
+class_name Player
 @onready var PlayerSprite2D = $PlayerSprite2D
-@onready var FallTimer = $FallTimer
 @onready var WalkParticles2D = $WalkParticles2D
 @onready var DashCollision = $DashCollision
 @onready var StandCollision = $StandCollision
+@onready var PlayerDetect = $PlayerDetect
+const DEAD_SOUND = preload("res://Sounds/dead.mp3")
+signal dead
+signal entered_checkpoint
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -85,8 +89,19 @@ func dash(delta: float):
 		WalkParticles2D.emitting = false
 	if rotated and !dashing:
 		rotation = 0
-		
-		
+
+func die():
+	set_physics_process(false)
+	PlayerSprite2D.play("die")
+	SoundManager.play_sound(DEAD_SOUND)
+	await PlayerSprite2D.animation_finished
+	dead.emit()
+	queue_free()
+	
+	
+func _ready() -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
 	if !dashing:
 		walk()
@@ -97,3 +112,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	move_and_slide()
+
+func _on_player_detect_area_entered(area: Area2D) -> void:
+	if area.is_in_group(&"CheckPoint"):
+		entered_checkpoint.emit()
