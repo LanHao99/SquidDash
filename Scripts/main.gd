@@ -1,8 +1,5 @@
 extends Node2D
-@onready var CheckPoint01 = $CheckPoint01
-@onready var CheckPoint02 = $CheckPoint02
-@onready var CheckPoint03 = $CheckPoint03
-
+@onready var CheckPointController = $CheckPointController
 @onready var DeathCountNumber = %DeathCountNumber
 const PLAYER_SCENE = preload("res://Scenes/Player.tscn")
 var player : Player
@@ -35,7 +32,7 @@ func update_death_count() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	check_points = [CheckPoint01, CheckPoint02, CheckPoint03, 0]
+	check_points = CheckPointController.get_children()
 	spawn_player()
 
 
