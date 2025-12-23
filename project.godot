@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SquidDash"
-run/main_scene="uid://6ihpw4glb2r7"
+run/main_scene="uid://cmop6m8m0vq55"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
