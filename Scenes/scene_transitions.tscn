@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://biye5pvtg7fh2"]
+
+[ext_resource type="Script" uid="uid://bw50ebq2tmw4n" path="res://Scripts/scene_transitions.gd" id="1_60q08"]
+
+[node name="SceneTransitions" type="Node"]
+script = ExtResource("1_60q08")
+
+[node name="CanvasLayer20" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="FadeBlack" type="ColorRect" parent="CanvasLayer20"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
